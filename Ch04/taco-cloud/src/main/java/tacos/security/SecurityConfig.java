@@ -19,9 +19,16 @@ import org.springframework.context.annotation.Bean;
 //import javax.sql.DataSource; JDBC 기반 사용자 스토어에 필요함
 
 
+/**
+ * 사용자의 HTTP 요청 경로에 대해 접근 제한과 같은 
+ * 보안 관련 처리를 우리가 원하는 대로 할 수 있게 해준다.
+ * @author developer
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -53,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.userDetailsService(userDetailsService)
 		.passwordEncoder(encoder());
 		
+		// 4.2.3 LDAP 기반 사용자 스토어
 		// 아래 코드는 책의 LDAP 기반 사용자 스토어 예제 코드입니다.
 		/*auth
 		.ldapAuthentication()
@@ -61,6 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.groupSearchBase("ou=groups")
 		.groupSearchFilter("member={0}")
 		.contextSource()
+		// 다음처럼 루트 경로를 지정할 수 있다.
 		.root("dc=tacocloud,dc=com")
 		.ldif("classpath:users.ldif")
 		.and()
@@ -68,6 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.passwordEncoder(new BCryptPasswordEncoder())
 		.passwordAttribute("userPasscode");*/
 		
+		// 4.2.2. JDBC 기반의 사용자 스토어
 		// 아래 코드는 책의 JDBC 기반 사용자 스토어 예제 코드입니다.
 		/*@Autowired
 	    DataSource dataSource;
@@ -83,6 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"where username=?")
 		.passwordEncoder(new NoEncodingPasswordEncoder());*/
 		
+		// 4.2.1 인메모리 사용사 스토어
 		// 아래 코드는 책의 인메모리 기반 사용자 스토어 예제 코드입니다.
 		/*auth.inMemoryAuthentication()
 		.withUser("user1")
