@@ -22,10 +22,12 @@ import java.util.List;
 
 @Data
 @Entity
+// order 개체가 데이터베이스의 Taco_Order 테이블에 저장되어야 한다는 것을 나타낸다. 
 @Table(name="Taco_Order")
 public class Order implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;

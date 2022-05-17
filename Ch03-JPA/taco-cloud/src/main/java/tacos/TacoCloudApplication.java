@@ -16,6 +16,11 @@ public class TacoCloudApplication {
 		SpringApplication.run(TacoCloudApplication.class, args);
 	}
 
+	/**
+	 * 애플리케이션이 시작되면서 호출되는 DataLoader 메서드에서 식자재 데이터를 데이터베이스에 미리 저장할 필요가 있기 때문이다.
+	 * @param repo
+	 * @return
+	 */
 	@Bean
 	public CommandLineRunner dataLoader(IngredientRepository repo) {
 		return new CommandLineRunner() {

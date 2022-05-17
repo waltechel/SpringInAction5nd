@@ -21,6 +21,7 @@ public class IngredientByIdConverter
 	
 	@Override
 	public Ingredient convert(String id) {
+		// 찾지 못했을 때 Optional을 줄 수 있다.
 		Optional<Ingredient> optionalIngredient = ingredientRepo.findById(id);
 		return optionalIngredient.isPresent() ?
 							optionalIngredient.get() : null;

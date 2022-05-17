@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
+// JPA 개체로 선언하려면 반드시 @Entity 애노테이션을 추가하여야 한다.
 @Entity
 public class Ingredient {
 	
