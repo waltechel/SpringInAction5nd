@@ -44,10 +44,11 @@ public class JdbcOrderRepository implements OrderRepository {
 	}
 	
 	private long saveOrderDetails(Order order) {
+		
 		@SuppressWarnings("unchecked")
-		Map<String, Object> values =
-		objectMapper.convertValue(order, Map.class);
+		Map<String, Object> values = objectMapper.convertValue(order, Map.class);
 		values.put("placedAt", order.getPlacedAt());
+		
 		long orderId =
 				orderInserter
 				.executeAndReturnKey(values)

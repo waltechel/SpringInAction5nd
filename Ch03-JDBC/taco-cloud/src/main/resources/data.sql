@@ -1,3 +1,4 @@
+-- data.sql 이라는 이름의 파일도 실행되도록 한다.
 delete from Taco_Order_Tacos;
 delete from Taco_Ingredients;
 delete from Taco;

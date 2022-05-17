@@ -1,3 +1,5 @@
+-- schema.sql 이라는 이름의 파일이 애플리케이션 classpath의 루트 경로에 있으면 
+-- application이 시작될 때 schema.sql 파일의 sql이 사용중인 데이터베이스에서 자동으로 실행된다.
 create table if not exists Ingredient (
   id varchar(4) not null,
   name varchar(25) not null,

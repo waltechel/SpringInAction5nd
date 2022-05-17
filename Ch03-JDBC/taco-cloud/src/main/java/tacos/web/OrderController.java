@@ -38,6 +38,9 @@ public class OrderController {
 		}
 		
 		orderRepo.save(order);
+		// 주문 객체가 데이터베이스에 저장된 후에는 더 이상 세션에 보존할 필요가 없다.
+		// 그러나 만일 제거하지 않으면 이전 주문 및 이것과 연관한 타코가 세션에 남게 되어
+		// 다음 주문이 이전 주문에 포함되었던 타코 객체를 가지고 시작하게 된다.
 		sessionStatus.setComplete();
 		
 		return "redirect:/";

@@ -32,6 +32,31 @@ public class JdbcIngredientRepository implements IngredientRepository {
 				this::mapRowToIngredient, id);
 	}
 	
+	/**
+	 * 그러나 종전처럼 RowMapper 인터페이스의 mapRow() 메서드를 구현하는 방법을
+	 * 사용할 수도 있다. 
+	 * @param id
+	 * @return
+	 */
+	public Ingredient findByIdBymapRow(String id) {
+		return jdbc.queryForObject(
+				"select id, name, type from Ingredient where id=?",
+				new RowMapper<Ingredient>() {
+					@Override
+					public Ingredient mapRow(ResultSet rs, int rowNum) throws SQLException {
+						return new Ingredient(rs.getString("id"), rs.getString("name"), 
+								Ingredient.Type.valueOf(rs.getString("type")));
+					}					
+				}, id);
+	}
+	
+	/**
+	 * mapper ResultSet을 Ingredient로 mapping하는 mapper method
+	 * @param rs 리턴받은 ResultSet 객체
+	 * @param rowNum 몇 개를 리턴받았는지
+	 * @return
+	 * @throws SQLException
+	 */
 	private Ingredient mapRowToIngredient(ResultSet rs, int rowNum)
 			throws SQLException {
 		return new Ingredient(
