@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class Taco {
 	
+//	null이 아니어야 한다는 규칙과 더불어 최소 5글자여야 한다.
 	@NotNull
 	@Size(min=5, message="Name must be at least 5 characters long")
 	private String name;

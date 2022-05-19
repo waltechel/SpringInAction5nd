@@ -16,6 +16,11 @@ import tacos.Ingredient.Type;
 import javax.validation.Valid;
 import org.springframework.validation.Errors;
 
+/*
+ * 다음 애너태이션은 SLF4j Logger를 생성한다.
+ * private static final org.slf4jLogger log = 
+ * org.slf4j.LoggerFactory.getLogger(DesignTacoController.class);
+ */
 @Slf4j
 @Controller
 @RequestMapping("/design")
@@ -54,6 +59,12 @@ public class DesignTacoController {
 				.collect(Collectors.toList());
 	}
 	
+	/**
+	 * 
+	 * @param design @Valid annotation이 붙었으므로 
+	 * @param errors
+	 * @return
+	 */
 	@PostMapping
 	public String processDesign(@Valid Taco design, Errors errors) {
 		if (errors.hasErrors()) {

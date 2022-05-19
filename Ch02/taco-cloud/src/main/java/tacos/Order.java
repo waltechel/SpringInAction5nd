@@ -25,6 +25,8 @@ public class Order {
 	@NotBlank(message="Zip code is required")
 	private String deliveryZip;
 	
+//	Luhn알고리즘 검사에 합격한 유효한 신용 카드 번호이어야 한다는 것을 선언한다.
+//	그러나 이 신용카드 번호는 실재하는지까지는 알지 못한다.
 	@CreditCardNumber(message="Not a valid credit card number")
 	private String ccNumber;
 	

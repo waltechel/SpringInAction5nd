@@ -23,6 +23,7 @@ public class OrderController {
 	
 	@PostMapping
 	public String processOrder(@Valid Order order, Errors errors) {
+		//에러가 있으면 처리를 중단하고 design 뷰 이름을 반환하여 폼이 다시 보이게 한다. 
 		if (errors.hasErrors()) {
 			return "orderForm";
 		}
